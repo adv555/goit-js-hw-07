@@ -6,13 +6,13 @@ ol {
 
 .gallery {
   display: flex;
+  flex-direction: column;
   list-style: none;
   margin-left: -30px;
   margin-top: -30px;
 }
 
 .card {
-  flex-basis: calc(100% / 3 - 30px);
   margin-top: 30px;
   margin-left: 30px;
   border-radius: 10px;
@@ -31,6 +31,14 @@ ol {
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
+@media screen and (min-width: 420px) {
+  .gallery {
+    flex-direction: row;
+  }
+  .card {
+    flex-basis: calc(100% / 3 - 30px);
+  }
+}
 /* ================= task 8 ================= */
 
 .boxes-wrapper {
