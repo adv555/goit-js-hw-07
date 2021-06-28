@@ -1,41 +1,41 @@
-const renderBtnEl = document.querySelector('[data-action="render"]');
-const destroyBtnEl = document.querySelector('[data-action="destroy"]');
-const boxesEl = document.getElementById('boxes');
+const refs = {
+  renderBtn: document.querySelector('[data-action="render"]'),
+  destroyBtn: document.querySelector('[data-action="destroy"]'),
+  boxes: document.getElementById('boxes'),
+  basicSize: 30,
+};
 
-renderBtnEl.addEventListener('click', getAmount);
-destroyBtnEl.addEventListener('click', destroyBoxes);
+refs.renderBtn.addEventListener('click', getAmount);
+refs.destroyBtn.addEventListener('click', destroyBoxes);
 
 // ========= get amount ========= //
 function getAmount() {
   let amount = +document.querySelector('#controls input').value;
   createBoxes(amount);
 }
-// ========= create boxMarckup ========= //
+// ========= create boxesMarckup ========= //
 function createBoxes(amount) {
-  const basicSize = 30;
-  const boxesWrapperEl = document.createElement('div');
-
-  boxesWrapperEl.classList.add('boxes-wrapper');
-  document.querySelector('#controls input').value = '';
+  const boxesWrapperRel = document.createElement('div');
+  boxesWrapperRel.classList.add('boxes-wrapper');
 
   for (let i = 0; i < amount; i++) {
-    const boxItemEL = document.createElement('div');
+    const boxItemRel = document.createElement('div');
 
-    const size = basicSize + i * 10;
-    const color = '#' + ((Math.random() * 0xffffff) << 0).toString(16);
+    let size = refs.basicSize + i * 10;
+    let color = '#' + ((Math.random() * 0xffffff) << 0).toString(16);
 
-    boxItemEL.classList.add('box__item');
-    boxItemEL.style.cssText = `width: ${size}px; height: ${size}px; background-color: ${color};`;
+    boxItemRel.classList.add('box__item');
+    boxItemRel.style.cssText = `width: ${size}px; height: ${size}px; background-color: ${color};`;
 
-    boxesWrapperEl.appendChild(boxItemEL);
+    boxesWrapperRel.appendChild(boxItemRel);
   }
 
-  boxesEl.appendChild(boxesWrapperEl);
+  refs.boxes.appendChild(boxesWrapperRel);
 }
 
 // ========= remove boxMarckup ========= //
 
 function destroyBoxes() {
-  boxesEl.innerHTML = '';
+  refs.boxes.innerHTML = '';
   document.querySelector('#controls input').value = '';
 }
