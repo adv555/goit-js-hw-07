@@ -1,18 +1,30 @@
 const ingredients = ['Картошка', 'Грибы', 'Чеснок', 'Помидоры', 'Зелень', 'Приправы'];
-
 const ingredientsEl = document.getElementById('ingredients');
 
-// =========== создает отдельный li =========== //
+// ============= Вариант 1 ============= //
 
-const makeRecipe = ingredient => {
-  const liItemEl = document.createElement('li');
-  liItemEl.classList.add('ingredients__item');
-  liItemEl.textContent = ingredient;
-  return liItemEl;
-};
+const items = ingredients.map(ingredient => {
+  const itemEl = document.createElement('li');
+  itemEl.textContent = ingredient;
 
-// =========== вставит все li за одну операцию в список ul =========== //
-
-ingredients.forEach(ingredient => {
-  return ingredientsEl.append(makeRecipe(ingredient));
+  return itemEl;
 });
+
+ingredientsEl.append(...items);
+
+// ============= Вариант 2 ============= //
+
+// const fragment = document.createDocumentFragment();
+
+// const makeRecipeMarkup = ingredients => {
+//   ingredients.forEach(ingredient => {
+//     const liItemEl = document.createElement('li');
+//     liItemEl.textContent = ingredient;
+
+//     return fragment.append(liItemEl);
+//   });
+
+//   return fragment;
+// };
+
+// ingredientsEl.append(makeRecipeMarkup(ingredients));
