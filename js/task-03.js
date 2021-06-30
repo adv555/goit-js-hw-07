@@ -13,23 +13,16 @@ const images = [
   },
 ];
 
-// ==== создание разметки тегов img вложенных в li ==== //
-
-const addGalleryCardMarkup = ({ url, alt }) =>
-  `<li class="card" ><img class="card__image" src= ${url} alt='${alt}' width = 100%, height = 100%/></li>`;
-
-// ==== Элементы галереи добавляются в DOM ==== //
-
 const galleryEl = document.getElementById('gallery');
-const addGalleryCard = images.map(image => {
-  return galleryEl.insertAdjacentHTML('afterbegin', addGalleryCardMarkup(image));
-});
-
-// ==== минимальное оформление галереи флексбоксами ==== //
 galleryEl.classList.add('gallery');
 
-// galleryEl.style.display = 'flex';
-// galleryEl.style.flexWrap = 'wrap';
-// galleryEl.style.alignContent = 'center';
-// galleryEl.style.listStyle = 'none';
-// galleryEl.style.padding = '15px';
+const markup = images.reduce((acc, { url, alt }) => {
+  return (
+    acc +
+    `<li class="card" ><img class="card__image" src= ${url} alt='${alt}' width = 100%, height = 100%/></li>`
+  );
+}, '');
+
+console.log(markup);
+
+galleryEl.insertAdjacentHTML('afterbegin', markup);
