@@ -23,6 +23,4 @@ const markup = images.reduce((acc, { url, alt }) => {
   );
 }, '');
 
-console.log(markup);
-
 galleryEl.insertAdjacentHTML('afterbegin', markup);
