@@ -15,6 +15,7 @@ function getAmount() {
 }
 // ========= create boxesMarckup ========= //
 function createBoxes(amount) {
+  refs.boxes.innerHTML = '';
   const boxesWrapperRel = document.createElement('div');
   boxesWrapperRel.classList.add('boxes-wrapper');
 
